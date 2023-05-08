@@ -185,7 +185,7 @@ properties:
   - name: secure
     type: Boolean
     summary: Creates a secure socket.
-    since: "12.1.0"
+    since: "12.2.0"
     default: false
     platforms: [android]
 
