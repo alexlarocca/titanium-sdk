@@ -17,6 +17,7 @@ import org.appcelerator.kroll.KrollFunction;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
+import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.io.TiStream;
 import org.appcelerator.titanium.util.TiConvert;
 import org.appcelerator.titanium.util.TiStreamHelper;
@@ -50,7 +51,7 @@ public class TCPProxy extends KrollProxy implements TiStream
 		if ((state != SocketModule.LISTENING) && (state != SocketModule.CONNECTED)) {
 			Object host = getProperty("host");
 			Object port = getProperty("port");
-			secure = TiConvert.toBoolean(getProperty("secure"), false);
+			secure = TiConvert.toBoolean(TiC.PROPERTY_SECURE, false);
 			if ((host != null) && (port != null) && (TiConvert.toInt(port) > 0)) {
 				new ConnectedSocketThread().start();
 
@@ -195,7 +196,7 @@ public class TCPProxy extends KrollProxy implements TiStream
 		{
 			String host = TiConvert.toString(getProperty("host"));
 			Object timeoutProperty = getProperty("timeout");
-			secure = TiConvert.toBoolean(getProperty("secure"), false);
+			secure = TiConvert.toBoolean(getProperty(TiC.PROPERTY_SECURE), false);
 
 			try {
 				if (timeoutProperty != null) {
